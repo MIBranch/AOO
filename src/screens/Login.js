@@ -7,15 +7,16 @@ class Login extends Component {
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Text style={styles.logo}>AOO</Text>
+          <Text style={styles.subTitle}>近くに友達はいるかな。</Text>
         </View>
         <View style={styles.formContainer}>
           <TextInput
-            placeholder="email"
+            placeholder="メールアドレス"
             placeholderTextColor='rgba(255,255,255,0.7)'
             style={styles.input}
             />
           <TextInput
-            placeholder="password"
+            placeholder="パスワード"
             placeholderTextColor='rgba(255,255,255,0.7)'
             secureTextEntry
             style={styles.input}
@@ -44,10 +45,15 @@ const styles = StyleSheet.create({
   },
   logo: {
     color: '#fff',
-    fontSize: 90
+    fontSize: 100,
+    padding: 40
+  },
+  subTitle: {
+    color: '#fff',
+    fontSize: 15
   },
   formContainer: {
-    padding: 60
+    padding: 55
   },
   input: {
     height: 40,

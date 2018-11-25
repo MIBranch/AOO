@@ -8,7 +8,11 @@ import Main from './src/screens/Main';
 const AppStackNavigator = createStackNavigator({
   Login: Login,
   Main: Main
-})
+});
+
+AppStackNavigator.navigationOptions = {
+  header: null,
+};
 
 const AppContainer = createAppContainer(AppStackNavigator);
 
