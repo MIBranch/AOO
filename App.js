@@ -10,10 +10,6 @@ const AppStackNavigator = createStackNavigator({
   Main: Main
 });
 
-AppStackNavigator.navigationOptions = {
-  header: null,
-};
-
 const AppContainer = createAppContainer(AppStackNavigator);
 
 export default AppContainer;

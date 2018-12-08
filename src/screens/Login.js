@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
-class Login extends Component {
+export default class Login extends Component {
+  static navigationOptions = {
+      header: null
+  }
   render() {
     return(
       <View style={styles.container}>
@@ -32,7 +35,6 @@ class Login extends Component {
     );
   }
 }
-export default Login;
 
 const styles = StyleSheet.create({
   container: {
