@@ -27,8 +27,7 @@ export default class Login extends Component {
 
           <Button onPress={() => this.props.navigation.navigate('Main')}
             title="LOGIN"
-            color="#FFFFFF"
-          >
+            color="#FFFFFF">
           </Button>
         </View>
       </View>
