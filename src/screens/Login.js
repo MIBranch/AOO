@@ -26,14 +26,25 @@ export default class Login extends Component {
             />
 
           <Button onPress={() => this.props.navigation.navigate('Main')}
-            title="LOGIN"
+            title="ログイン"
             color="#FFFFFF">
           </Button>
+          <Button title="既にアカウントをお持ちの方" onPress={this.doAction}
+            color="#FFFFFF">
+          </Button>
+        </View>
+        <View style={styles.underContainer}>
+          <Text style={styles.team}>presented by MIB</Text>
         </View>
       </View>
     );
   }
+
+  doAction = ()=>{
+    this.message = "新規登録へ";
+  }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -63,5 +74,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderBottomColor: 'rgba(255,255,255,0.87)',
     borderBottomWidth: 1
+  },
+  underContainer: {
+    alignItems: 'center',
+  },
+  team: {
+    color: '#fff',
+    fontSize: 10,
+    padding: 30
   },
 });
