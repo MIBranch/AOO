@@ -10,7 +10,9 @@ export default class AddFriend extends Component {
   render() {
     return(
       <View style={styles.container}>
-          <Text>AddFriend</Text>
+          <Text>自分のID</Text>
+          <Text>自分のIDをリンクさせたい</Text>
+          <Text>友達のIDを検索</Text>
       </View>
     )
   }
