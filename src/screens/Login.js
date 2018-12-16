@@ -29,7 +29,12 @@ export default class Login extends Component {
             title="ログイン"
             color="#FFFFFF">
           </Button>
-          <Button title="既にアカウントをお持ちの方" onPress={this.doAction}
+          <Button onPress={() => this.props.navigation.navigate('Main')}
+            title="既にアカウントをお持ちの方"
+            color="#FFFFFF">
+          </Button>
+          <Button onPress={() => this.props.navigation.navigate('Practice')}
+            title="練習用（後で削除）"
             color="#FFFFFF">
           </Button>
         </View>
@@ -38,10 +43,6 @@ export default class Login extends Component {
         </View>
       </View>
     );
-  }
-
-  doAction = ()=>{
-    this.message = "新規登録へ";
   }
 }
 
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   logo: {
     color: '#fff',
     fontSize: 100,
-    padding: 40
+    padding: 30
   },
   subTitle: {
     color: '#fff',

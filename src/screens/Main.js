@@ -3,7 +3,9 @@ import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 
 export default class Main extends Component {
   static navigationOptions = ({ navigation }) => {
-      let headerLeft = (<Text style={styles.headerButton}>時間あり</Text>);
+      let headerLeft = (
+        <Text style={styles.headerButton}>時間あり</Text>
+        );
       let headerTitle = (
         <TouchableHighlight style={styles.headerButton} onPress={() => navigation.navigate('MyInfo')}>
           <Text style={styles.headerButtonText}>谷口　貴也</Text>
