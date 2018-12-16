@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class Practice extends Component {
+
+  constructor(props) {
+    super(props);
+    this.title = 'Mooonsaan'
+    this.message = '1weekWaite';
+  }
+
   render() {
     return (
       <View style={styles.base}>
-        <Text style={styles.title}>
-          Wooonmmmmm
-        </Text>
-        <Text style={styles.subTitle}>
-          Welcome to Practice!!
-        </Text>
-        <Text style={styles.message}>
-          少しだけお時間ください。AOO開発のドライバーにしますから。
-        </Text>
+        <View style={styles.small} />
+        <View style={styles.middle} />
+        <View style={styles.large} />
       </View>
     );
   }
@@ -24,23 +25,28 @@ const styles = StyleSheet.create({
   base: {
     padding: 30
   },
-  title: {
-    padding: 10,
-    color:'red',
-    textAlign:'center',
-    fontSize:60,
-    fontWeight:'bold'
+  small: {
+    width: 100,
+    height: 100,
+    borderStyle: 'solid',
+    borderWidth: 5,
+    borderColor: 'black',
+    backgroundColor: '#00aa00',
   },
-  subTitle: {
-    padding: 10,
-    color:'blue',
-    fontSize:20,
-    fontWeight:'bold'
+  middle: {
+    width: 200,
+    height: 200,
+    borderStyle: 'solid',
+    borderWidth: 5,
+    borderColor: 'black',
+    backgroundColor: '#66ff66',
   },
-  message: {
-    padding: 10,
-    color:'green',
-    fontSize:26,
-    fontWeight:'bold'
+  large: {
+    width: 300,
+    height: 300,
+    borderStyle: 'solid',
+    borderWidth: 5,
+    borderColor: 'black',
+    backgroundColor: '#ccffcc',
   }
 });
