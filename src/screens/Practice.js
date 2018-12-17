@@ -25,28 +25,4 @@ const styles = StyleSheet.create({
   base: {
     padding: 30
   },
-  small: {
-    width: 100,
-    height: 100,
-    borderStyle: 'solid',
-    borderWidth: 5,
-    borderColor: 'black',
-    backgroundColor: '#00aa00',
-  },
-  middle: {
-    width: 200,
-    height: 200,
-    borderStyle: 'solid',
-    borderWidth: 5,
-    borderColor: 'black',
-    backgroundColor: '#66ff66',
-  },
-  large: {
-    width: 300,
-    height: 300,
-    borderStyle: 'solid',
-    borderWidth: 5,
-    borderColor: 'black',
-    backgroundColor: '#ccffcc',
-  }
 });
