@@ -1,0 +1,28 @@
+{
+  "friend": [
+    {
+      "name": "Saito Yukio",
+      "distance": 50,
+      "status": 1,
+      "message": "Want to play"
+    },
+    {
+      "name": "Yamashita Shohei",
+      "distance": 250,
+      "status": 2,
+      "message": "After 5 min"
+    },
+    {
+      "name": "Moon Jaewoong",
+      "distance": 500,
+      "status": 3,
+      "message": "Busy"
+    },
+    {
+      "name": "Kumazawa Shunichi",
+      "distance": 50,
+      "status": 4,
+      "message": "Offline"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import data from '../dummy/FriendList.json';
 
 export default class Main extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -23,7 +24,7 @@ export default class Main extends Component {
   render() {
     return(
       <View style={styles.container}>
-          <Text>main</Text>
+          <Text>{data.friend[0].name}</Text>
       </View>
     )
   }
