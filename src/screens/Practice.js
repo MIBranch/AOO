@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import { StyleSheet, Alert, Button, Text, View } from 'react-native';
+import { StyleSheet, Button, Text, View } from 'react-native';
 
 export default class Practice extends Component {
+  counter = 0;
+
+  constructor(props) {
+    super(props);
+    this.state = {message: 'click me...'};
+  }
+
   render() {
     return (
       <View style={styles.base}>
         <Text style={styles.title}>Hello!!</Text>
+        <Text style={styles.message}>{this.state.message}</Text>
         <Button title="Click" onPress={this.doAction} />
       </View>
     );
   }
 
   doAction = ()=>{
-    Alert.alert('you clicked!!');
+    this.setState({message:'count: ' + ++this.counter});
   }
 }
 
@@ -24,8 +32,10 @@ const styles = StyleSheet.create({
   title: {
     padding: 10,
     color: 'red',
-    textAlign: 'center',
     fontSize: 60,
-    fontWeight: 'bold'
-  }
+  },
+  message: {
+    padding: 10,
+    fontSize: 32,
+  },
 });
