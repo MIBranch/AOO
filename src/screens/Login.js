@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
 export default class Login extends Component {
+
   static navigationOptions = {
       header: null
   }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Button, Text, View } from 'react-native';
+import { StyleSheet, Button, TextInput, Text, View } from 'react-native';
 
 export default class Practice extends Component {
-  counter = 0;
 
   constructor(props) {
     super(props);
-    this.state = {message: 'click me...'};
+    this.state = {message: 'your name', text:''};
   }
 
   render() {
@@ -14,13 +13,21 @@ export default class Practice extends Component {
       <View style={styles.base}>
         <Text style={styles.title}>Hello!!</Text>
         <Text style={styles.message}>{this.state.message}</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="write here..."
+          value={this.state.text}
+          onChangeText={this.doType}
+        />
         <Button title="Click" onPress={this.doAction} />
       </View>
     );
   }
 
+  doType = (text) => this.setState({text});
+
   doAction = ()=>{
-    this.setState({message:'count: ' + ++this.counter});
+    this.setState({Text:'', message:'Hello, ' + this.state.text + '!', });
   }
 }
 
@@ -35,6 +42,10 @@ const styles = StyleSheet.create({
     fontSize: 60,
   },
   message: {
+    padding: 10,
+    fontSize: 32,
+  },
+  input: {
     padding: 10,
     fontSize: 32,
   },
