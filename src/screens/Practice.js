@@ -12,11 +12,13 @@ export default class Practice extends Component {
     return (
       <View style={styles.base}>
         <Text style={styles.title}>Hello!!</Text>
-        <Text style={styles.message}>{this.state.message}</Text>
+        <Text style={styles.message}>
+          {this.state.message}
+        </Text>
         <TextInput
+          ref={component => this._textInput = component}
           style={styles.input}
           placeholder="write here..."
-          value={this.state.text}
           onChangeText={this.doType}
         />
         <Button title="Click" onPress={this.doAction} />
@@ -28,6 +30,7 @@ export default class Practice extends Component {
 
   doAction = ()=>{
     this.setState({Text:'', message:'Hello, ' + this.state.text + '!', });
+    this._textInput.setNativeProps({text: ''});
   }
 }
 
