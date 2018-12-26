@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, Picker, Text, View } from 'react-native';
+import { StyleSheet, ListView, Text, View } from 'react-native';
 
 export default class Practice extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {message:'select me!'};
+    const data = new ListView.DataSource(
+      {rowHasChanged: (r1, r2) => r1 !== r2}
+    );
+    const items = ['Windows', 'macOS', 'Linux', 'chormeOS'];
+    this.state = {
+      message:'select me!!',
+      dataSource: data.cloneWithRows(items),
+    };
   }
 
   render() {
@@ -17,20 +24,16 @@ export default class Practice extends Component {
         <Text style={styles.message}>
           {this.state.message}
         </Text>
-        <Picker prompt={'Select item:'}
-          selectedValue={this.state.value}
-          onValueChange={this.doAction}>
-          <Picker.Item label="Windows" value="Windows" />
-          <Picker.Item label="Mac" value="macOS" />
-          <Picker.Item label="Linux" value="Linux" />
-          <Picker.Item label="ChromeBook" value="ChromeOS" />
-        </Picker>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+        />
       </View>
     );
   }
 
-  doAction = (itemValue, itemIndex)=>
-    this.setState({value: itemValue, message:'select: "' + itemValue + '".'})
+  renderRow = (rowData, sectionID, rowID, highlightRow)=>
+    <Text style={styles.item}>{rowID}: {rowData}</Text>;
 
 }
 
@@ -47,5 +50,13 @@ const styles = StyleSheet.create({
     padding: 10,
     color: 'black',
     fontSize: 32,
+  },
+  item: {
+    borderStyle:'solid',
+    borderWidth:1,
+    padding:10,
+    margin:5,
+    fontSize:24,
+    color:'blue',
   }
 });
