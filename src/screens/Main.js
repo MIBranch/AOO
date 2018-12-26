@@ -1,15 +1,26 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableHighlight, FlatList} from 'react-native';
-import { List, ListItem } from 'react-native-elements'
+import { List, ListItem } from 'react-native-elements';
+import { Dropdown } from 'react-native-material-dropdown';
 
 import data from '../dummy/FriendList.json';
 import Friend from '../models/Friend';
 
 export default class Main extends Component {
+  constructor() {
+    super();
+    this.state={
+      data: [],
+      status: '時間あり'
+    }
+  }
   static navigationOptions = ({ navigation }) => {
       let headerLeft = (
-        <Text style={styles.headerButton}>時間あり</Text>
-        );
+        <Dropdown
+          value= '時間あり'
+          data= {status}
+        />
+      );
       let headerTitle = (
         <TouchableHighlight style={styles.headerButton} onPress={() => navigation.navigate('MyInfo')}>
           <Text style={styles.headerButtonText}>谷口　貴也</Text>
@@ -23,12 +34,6 @@ export default class Main extends Component {
         );
 
       return { headerTitle, headerTitleStyle, headerLeft, headerRight }
-  }
-  constructor() {
-    super();
-    this.state={
-      data: []
-    }
   }
 
   render() {
@@ -62,6 +67,14 @@ export default class Main extends Component {
     );
   }
 }
+
+const status = [
+  // in here just for little while
+  { value: '時間あり' },
+  { value: 'もう少し' },
+  { value: '今は厳しい' },
+  { value: '位置を隠す' }
+];
 
 const styles = StyleSheet.create({
   container: {
