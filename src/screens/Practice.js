@@ -1,62 +1,75 @@
 import React, { Component } from 'react';
-import { StyleSheet, ListView, Text, View } from 'react-native';
+import { StyleSheet, FlatList, StatusBar, Text, View } from 'react-native';
+import { Header } from 'react-native-elements';
 
 export default class Practice extends Component {
+  items = [
+    {key:'Windows'},
+    {key:'macOS'},
+    {key:'Linux'},
+    {key:'chrome0S'},
+    {key:'Fucsia'},
+  ] ;
 
   constructor(props) {
     super(props);
-    const data = new ListView.DataSource(
-      {rowHasChanged: (r1, r2) => r1 !== r2}
-    );
-    const items = ['Windows', 'macOS', 'Linux', 'chormeOS'];
-    this.state = {
-      message:'select me!!',
-      dataSource: data.cloneWithRows(items),
-    };
+    StatusBar.setBarStyle('dark-content', true);
+    StatusBar.setBackgroundColor('#008080', true);
   }
 
   render() {
     return (
       <View style={styles.base}>
-        <Text style={styles.title}>
-          UI
-        </Text>
-        <Text style={styles.message}>
-          {this.state.message}
-        </Text>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
+        <Header
+          centerComponent={{
+            text:"SampleApp",
+            style:styles.header
+          }}
+          outerContainerStyles={{
+            height:100, backgroundColor: '#dd0000'
+          }}
         />
+        <View style={styles.body}>
+          <Text style={styles.title}>
+            Layout
+          </Text>
+          <FlatList
+            data={this.items}
+            renderItem={this.getItem}
+          />
+        </View>
       </View>
     );
   }
 
-  renderRow = (rowData, sectionID, rowID, highlightRow)=>
-    <Text style={styles.item}>{rowID}: {rowData}</Text>;
+  getItem = ({item}) =>
+    <Text style={styles.item}>
+      {item.key}
+    </Text>
 
 }
 
 const styles = StyleSheet.create({
   base: {
-    padding: 25
+    padding: 0,
+    flex:1,
+  },
+  body: {
+    padding: 10,
+    flex:1,
+  },
+  header: {
+    color: 'white',
+    fontSize: 32,
+    fontWeight:'bold',
   },
   title: {
-    padding: 10,
-    color: 'red',
-    fontSize: 60,
-  },
-  message: {
-    padding: 10,
-    color: 'black',
-    fontSize: 32,
+    padding:10,
+    color:'blue',
+    fontSize:48,
   },
   item: {
-    borderStyle:'solid',
-    borderWidth:1,
-    padding:10,
     margin:5,
     fontSize:24,
-    color:'blue',
   }
 });
