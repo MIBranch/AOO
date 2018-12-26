@@ -1,40 +1,35 @@
 import React, { Component } from 'react';
-import { StyleSheet, Button, TextInput, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default class Practice extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {message: 'your name', text:''};
   }
 
   render() {
     return (
       <View style={styles.base}>
-        <Text style={styles.title}>Hello!!</Text>
-        <Text style={styles.message}>{this.state.message}</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="write here..."
-          value={this.state.text}
-          onChangeText={this.doType}
-        />
-        <Button title="Click" onPress={this.doAction} />
+        <Text style={style.title}>Hello!</Text>
+        <Welcome />
+        <Welcome />
       </View>
     );
   }
 
-  doType = (text) => this.setState({text});
+}
 
-  doAction = ()=>{
-    this.setState({Text:'', message:'Hello, ' + this.state.text + '!', });
+class Welcome extends Component {
+  render() {
+    return (
+      <Text style={styles.message}>こんにちは！</Text>
+    );
   }
 }
 
-
 const styles = StyleSheet.create({
   base: {
-    padding: 30
+    padding: 25
   },
   title: {
     padding: 10,
@@ -42,10 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 60,
   },
   message: {
-    padding: 10,
-    fontSize: 32,
-  },
-  input: {
     padding: 10,
     fontSize: 32,
   },
