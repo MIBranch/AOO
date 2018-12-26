@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Switch, Text, View } from 'react-native';
+import { StyleSheet, Picker, Text, View } from 'react-native';
 
 export default class Practice extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: false};
+    this.state = {message:'select me!'};
   }
 
   render() {
@@ -15,14 +15,22 @@ export default class Practice extends Component {
           UI
         </Text>
         <Text style={styles.message}>
-          switch:{this.state.value ? 'ON':'Off'}
+          {this.state.message}
         </Text>
-        <Switch value={this.state.value} onValueChange={this.doAction} />
+        <Picker prompt={'Select item:'}
+          selectedValue={this.state.value}
+          onValueChange={this.doAction}>
+          <Picker.Item label="Windows" value="Windows" />
+          <Picker.Item label="Mac" value="macOS" />
+          <Picker.Item label="Linux" value="Linux" />
+          <Picker.Item label="ChromeBook" value="ChromeOS" />
+        </Picker>
       </View>
     );
   }
 
-  doAction = (value)=>this.setState({value: value});
+  doAction = (itemValue, itemIndex)=>
+    this.setState({value: itemValue, message:'select: "' + itemValue + '".'})
 
 }
 
