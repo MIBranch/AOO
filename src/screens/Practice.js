@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Switch, Text, View } from 'react-native';
 
 export default class Practice extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {value: false};
   }
 
   render() {
     return (
       <View style={styles.base}>
-        <Text style={style.title}>Hello!</Text>
-        <Welcome />
-        <Welcome />
+        <Text style={styles.title}>
+          UI
+        </Text>
+        <Text style={styles.message}>
+          switch:{this.state.value ? 'ON':'Off'}
+        </Text>
+        <Switch value={this.state.value} onValueChange={this.doAction} />
       </View>
     );
   }
 
-}
+  doAction = (value)=>this.setState({value: value});
 
-class Welcome extends Component {
-  render() {
-    return (
-      <Text style={styles.message}>こんにちは！</Text>
-    );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
   },
   message: {
     padding: 10,
+    color: 'black',
     fontSize: 32,
-  },
+  }
 });
