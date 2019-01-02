@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
 
 export default class Login extends Component {
 
@@ -20,12 +21,11 @@ export default class Login extends Component {
             style={styles.input}
             />
           <TextInput
-            placeholder="パスワード"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            secureTextEntry
-            style={styles.input}
+          placeholder="パスワード"
+          placeholderTextColor='rgba(255,255,255,0.7)'
+          secureTextEntry
+          style={styles.input}
             />
-
           <Button onPress={() => this.props.navigation.navigate('Main')}
             title="ログイン"
             color="#FFFFFF">
@@ -43,6 +43,36 @@ export default class Login extends Component {
           <Text style={styles.team}>presented by MIB</Text>
         </View>
       </View>
+
+      //FormComponent上手くいかず。。
+          //<FormLabel labelStyle={{fontSize:24}}>メールアドレス</FormLabel>
+          //<FormInput inputStyle={{fontSize:24}}
+            //onChangeText={(value)=>this.setState({mail:value})}
+            ///>
+          //<FormLabel labelStyle={{fontSize:24}}>パスワード</FormLabel>
+          //<FormInput inputStyle={{fontSize:24}}
+            //onChangeText={(value)=>this.setState({pass:value})}
+            ///>
+          //<FormValidationMessage labelStyle={{fontSize:18}}>
+            //{this.state.mail == '' ? 'type your mail...':''}
+          //</FormValidationMessage>
+          //<FormValidationMessage labelStyle={{fontSize:18}}>
+            //{this.state.pass == '' ? 'type your pass...':''}
+          //</FormValidationMessage>
+          //<Button onPress={() => this.props.navigation.navigate('Main')}
+            //title="ログイン"
+            //color="#FFFFFF">
+          //</Button>
+          //<Button onPress={() => this.props.navigation.navigate('Main')}
+            //title="既にアカウントをお持ちの方"
+            //color="#FFFFFF">
+          //</Button>
+          //<Button onPress={() => this.props.navigation.navigate('Practice')}
+            //title="練習用（後で削除）"
+            //color="#FFFFFF">
+          //</Button>
+        //</View>
+
     );
   }
 }
