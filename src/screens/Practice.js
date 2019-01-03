@@ -1,75 +1,64 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, StatusBar, Text, View } from 'react-native';
+import { StyleSheet, Alert, StatusBar, TextInput, Text, View } from 'react-native';
 import { Header } from 'react-native-elements';
 
 export default class Practice extends Component {
-  items = [
-    {key:'Windows'},
-    {key:'macOS'},
-    {key:'Linux'},
-    {key:'chrome0S'},
-    {key:'Fucsia'},
-  ] ;
-
   constructor(props) {
     super(props);
-    StatusBar.setBarStyle('dark-content', true);
-    StatusBar.setBackgroundColor('#008080', true);
   }
 
   render() {
     return (
-      <View style={styles.base}>
+      <View>
         <Header
+          leftComponent={{
+            icon: 'menu', color: 'white', size:35,
+            onPress:this.doActionLeft
+          }}
           centerComponent={{
             text:"SampleApp",
             style:styles.header
           }}
+          rightComponent={{
+            icon: 'android', color: 'white', size:35,
+            onPress:this.doActionRight
+          }}
           outerContainerStyles={{
             height:100, backgroundColor: '#dd0000'
           }}
+          innerContainerStyles={{
+            backgroundColor: '#dd0000'
+          }}
         />
-        <View style={styles.body}>
-          <Text style={styles.title}>
-            Layout
-          </Text>
-          <FlatList
-            data={this.items}
-            renderItem={this.getItem}
-          />
+        <View style={styles.base}>
+          <Text style={styles.title}>Layout</Text>
+          <Text style={styles.message}>This is sample message.</Text>
         </View>
       </View>
     );
   }
 
-  getItem = ({item}) =>
-    <Text style={styles.item}>
-      {item.key}
-    </Text>
-
+  doActionLeft = ()=>{ Alert.alert('Left icon tapped!'); }
+  doActionRight = ()=>{ Alert.alert('Right icon tapped!'); }
 }
 
 const styles = StyleSheet.create({
   base: {
     padding: 0,
-    flex:1,
-  },
-  body: {
-    padding: 10,
-    flex:1,
   },
   header: {
     color: 'white',
-    fontSize: 32,
+    fontSize: 28,
     fontWeight:'bold',
   },
   title: {
     padding:10,
-    color:'blue',
+    color:'red',
     fontSize:48,
   },
-  item: {
-    margin:5,
+  message: {
+    padding: 10,
+    color:'blue',
     fontSize:24,
-  }
+  },
 });

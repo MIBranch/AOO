@@ -45,6 +45,7 @@ export default class Login extends Component {
       </View>
 
       //FormComponent上手くいかず。。
+      //多分headerがnullとなっているから
           //<FormLabel labelStyle={{fontSize:24}}>メールアドレス</FormLabel>
           //<FormInput inputStyle={{fontSize:24}}
             //onChangeText={(value)=>this.setState({mail:value})}
