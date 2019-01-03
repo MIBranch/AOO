@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableHighlight, FlatList} from 'react-native';
+import {StyleSheet, Text, View, TouchableHighlight, FlatList, ScrollView} from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
 
@@ -23,7 +23,7 @@ export default class Main extends Component {
       );
       let headerTitle = (
         <TouchableHighlight style={styles.headerButton} onPress={() => navigation.navigate('MyInfo')}>
-          <Text style={styles.headerButtonText}>谷口　貴也</Text>
+          <Text style={styles.headerButtonText}>自分の名前</Text>
         </TouchableHighlight>
         );
       let headerTitleStyle: { alignSelf:"center" };
@@ -49,16 +49,21 @@ export default class Main extends Component {
       friendList.push(friend)
     }
     return(
-      <View style={styles.container}>
+      <View style={styles.base}>
         <List>
           <FlatList
             data={friendList}
             renderItem={({ item }) =>
-              <View>
-                <Text>{item.name}</Text>
-                <Text>{item.distance}</Text>
-                <Text>{item.status}</Text>
-                <Text>{item.message}</Text>
+              <View style={styles.container}>
+                <View style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                }}>
+                  <Text>{item.name}</Text>
+                  <Text>{item.distance}</Text>
+                  <Text>{item.status}</Text>
+                  <Text>{item.message}</Text>
+                </View>
               </View>
             }
           />
@@ -77,11 +82,19 @@ const status = [
 ];
 
 const styles = StyleSheet.create({
+  base: {
+    flex: 1,
+    padding: 0,
+  },
   container: {
     flex: 1,
+    padding: 5,
+    fontSize: 20,
+    borderStyle:'solid',
+    borderWidth: 0.3,
   },
   headerButton: {
-    padding: 20,
+    padding: 10,
   },
   headerButtonText: {
     color: "#000000",
