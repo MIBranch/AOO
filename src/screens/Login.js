@@ -36,10 +36,6 @@ export default class Login extends Component {
             title="新しいアカウントを作成"
             color="#FFFFFF">
           </Button>
-          <Button onPress={() => this.props.navigation.navigate('Practice')}
-            title="練習用（後で削除）"
-            color="#FFFFFF">
-          </Button>
         </View>
         <View style={styles.underContainer}>
           <Text style={styles.team}>presented by MIB</Text>
