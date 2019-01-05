@@ -4,35 +4,43 @@ import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements
 
 export default class Login extends Component {
 
-  static navigationOptions = {
-      header: null
-  }
   render() {
     return(
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Text style={styles.logo}>AOOに登録しよう！！</Text>
-          <Text style={styles.subTitle}>アカウント名、メールアドレス、パスワードを入力するだけで簡単に登録出来ます。</Text>
+          <Text style={styles.subTitle}>以下の入力をするだけで簡単に登録出来ます。</Text>
         </View>
         <View style={styles.formContainer}>
-          <TextInput
-            placeholder="アカウント名"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            style={styles.input}
-            />
-          <TextInput
-            placeholder="メールアドレス"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            style={styles.input}
-            />
-          <TextInput
-          placeholder="パスワード"
-          placeholderTextColor='rgba(255,255,255,0.7)'
-          secureTextEntry
-          style={styles.input}
-            />
+          <View style={{
+            flexDirextion: 'colum',
+            justifycontent: 'center',
+          }}>
+            <TextInput
+              placeholder="アカウント名"
+              placeholderTextColor='rgba(255,255,255,0.7)'
+              style={styles.input}
+              />
+            <TextInput
+              placeholder="メールアドレス"
+              placeholderTextColor='rgba(255,255,255,0.7)'
+              style={styles.input}
+              />
+            <TextInput
+              placeholder="パスワード"
+              placeholderTextColor='rgba(255,255,255,0.7)'
+              secureTextEntry
+              style={styles.input}
+              />
+          </View>
           <Button onPress={() => this.props.navigation.navigate('App')}
             title="登録"
+            color="#FFFFFF">
+          </Button>
+        </View>
+        <View style={styles.formContainer2}>
+          <Button onPress={()=> this.props.navigation.navigate('Login')}
+            title="既にアカウントをお持ちの方"
             color="#FFFFFF">
           </Button>
         </View>
@@ -50,6 +58,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#2979FF'
   },
   logoContainer: {
+    flex: 1,
+    padding: 5,
     alignItems: 'center',
     flexGrow: 1,
   },
@@ -60,9 +70,10 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: '#fff',
-    fontSize: 10
+    fontSize: 13
   },
   formContainer: {
+    flex: 2,
     padding: 55
   },
   input: {
@@ -73,8 +84,15 @@ const styles = StyleSheet.create({
     borderBottomColor: 'rgba(255,255,255,0.87)',
     borderBottomWidth: 1
   },
+  formContainer2: {
+    flex: 1,
+    fontSize: 20,
+    padding: 30
+  },
   underContainer: {
+    flex: 0.5,
     alignItems: 'center',
+    height: 20
   },
   team: {
     color: '#fff',

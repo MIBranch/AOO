@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   formContainer: {
+    flex: 2,
     padding: 55
   },
   input: {
@@ -107,9 +108,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   formContainer2: {
+    flex: 1,
     padding:25,
   },
   underContainer: {
+    flex: 1,
     alignItems: 'center',
   },
   team: {
