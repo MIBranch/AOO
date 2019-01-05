@@ -26,11 +26,11 @@ export default class Login extends Component {
           secureTextEntry
           style={styles.input}
             />
-          <Button onPress={() => this.props.navigation.navigate('Main')}
+          <Button onPress={() => this.props.navigation.navigate('App')}
             title="ログイン"
             color="#FFFFFF">
           </Button>
-          <Button onPress={() => this.props.navigation.navigate('Main')}
+          <Button onPress={() => this.props.navigation.navigate('App')}
             title="既にアカウントをお持ちの方"
             color="#FFFFFF">
           </Button>

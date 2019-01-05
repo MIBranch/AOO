@@ -1,21 +1,33 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
 import Login from './src/screens/Login';
 import Main from './src/screens/Main';
 import AddFriend from './src/screens/AddFriend';
 import MyInfo from './src/screens/MyInfo';
 import Practice from './src/screens/Practice';
+import AuthLoading from './src/screens/AuthLoading';
 
-const AppStackNavigator = createStackNavigator({
-  Login: Login,
+const AppStack = createStackNavigator({
   Main: Main,
   AddFriend: AddFriend,
   MyInfo: MyInfo,
   Practice: Practice
 });
 
-const AppContainer = createAppContainer(AppStackNavigator);
+const AuthStack = createStackNavigator({
+  Login: Login,
+});
 
-export default AppContainer;
+export default AppContainer = createAppContainer(createSwitchNavigator(
+  {
+    AuthLoading: AuthLoading,
+    App: AppStack,
+    Auth: AuthStack,
+    Practice: Practice
+  },
+  {
+    initialRouteName: 'AuthLoading'
+  }
+  ));
