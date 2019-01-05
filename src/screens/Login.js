@@ -12,7 +12,7 @@ export default class Login extends Component {
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Text style={styles.logo}>AOO</Text>
-          <Text style={styles.subTitle}>近くに友達はいるかな。</Text>
+          <Text style={styles.subTitle}>近くに友達はいるかな</Text>
         </View>
         <View style={styles.formContainer}>
           <TextInput
@@ -30,8 +30,10 @@ export default class Login extends Component {
             title="ログイン"
             color="#FFFFFF">
           </Button>
-          <Button onPress={() => this.props.navigation.navigate('App')}
-            title="既にアカウントをお持ちの方"
+        </View>
+        <View style={styles.formContainer2}>
+          <Button onPress={() => this.props.navigation.navigate('SignUp')}
+            title="新しいアカウントを作成"
             color="#FFFFFF">
           </Button>
           <Button onPress={() => this.props.navigation.navigate('Practice')}
@@ -107,6 +109,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderBottomColor: 'rgba(255,255,255,0.87)',
     borderBottomWidth: 1
+  },
+  formContainer2: {
+    padding:25,
   },
   underContainer: {
     alignItems: 'center',
