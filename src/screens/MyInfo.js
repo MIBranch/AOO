@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import firebase from 'react-native-firebase'
 
 export default class MyInfo extends Component {
   static navigationOptions = ({ navigation }) => {
     let headerTitle = (<Text style={styles.addTitle}>プロフィール</Text>);
     let headerTitleStyle: {alignSelf:"center"};
     return {headerTitle, headerTitleStyle}
+  }
+  handleLogOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => this.props.navigation.navigate('AuthLoading'))
   }
 
   render() {
@@ -29,7 +36,7 @@ export default class MyInfo extends Component {
             placeholderTextColor='rgba(0,0,255,0.5)'
             style={styles.input}
           />
-          <Button onPress={() => this.props.navigation.navigate('Login')}
+          <Button onPress={this.handleLogOut}
             title="LOGOUT">
           </Button>
       </View>
