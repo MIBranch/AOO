@@ -13,11 +13,11 @@ const AppStack = createStackNavigator({
   Main: Main,
   AddFriend: AddFriend,
   MyInfo: MyInfo,
-  SignUp: SignUp,
 });
 
 const AuthStack = createStackNavigator({
   Login: Login,
+  SignUp: SignUp,
 });
 
 export default AppContainer = createAppContainer(createSwitchNavigator(
@@ -25,7 +25,6 @@ export default AppContainer = createAppContainer(createSwitchNavigator(
     AuthLoading: AuthLoading,
     App: AppStack,
     Auth: AuthStack,
-    SignUp: SignUp,
   },
   {
     initialRouteName: 'AuthLoading'
