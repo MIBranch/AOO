@@ -1,4 +1,4 @@
-package com.aoo;
+package com.bankersMIB.AOO;
 
 import com.facebook.react.ReactActivity;
 

@@ -12,6 +12,7 @@
     "react-docgen": "^2.21.0",
     "react-native": "0.57.4",
     "react-native-elements": "^0.19.1",
+    "react-native-firebase": "^5.2.0",
     "react-native-gesture-handler": "^1.0.9",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-vector-icons": "^6.1.0",

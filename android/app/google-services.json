@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "922912438396",
+    "firebase_url": "https://bankers-mib.firebaseio.com",
+    "project_id": "bankers-mib",
+    "storage_bucket": "bankers-mib.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922912438396:android:4fe806624e43122f",
+        "android_client_info": {
+          "package_name": "com.bankersMIB.AOO"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922912438396-k5jmc11q7p7beo9m7roij2cbul0a7s9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNB--c280_PYlgkaC2XsyjrfxUpRyHO4M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
