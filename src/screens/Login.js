@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
+import firebase from 'react-native-firebase';
 
 export default class Login extends Component {
-
   static navigationOptions = {
       header: null
+  }
+  state = { email: '', password: '', errorMessage: null }
+  handleLogin = () => {
+    console.log('handleLogin');
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => this.props.navigation.navigate('App'))
+      .catch(error => this.setState({ errorMessage: error.message }))
   }
   render() {
     return(
@@ -15,18 +24,29 @@ export default class Login extends Component {
           <Text style={styles.subTitle}>近くに友達はいるかな</Text>
         </View>
         <View style={styles.formContainer}>
+          {this.state.errorMessage &&
+            <Text style={{ color: 'red' }}>
+              {this.state.errorMessage}
+            </Text>
+          }
           <TextInput
+            autoCapitalize="none"
+            onChangeText={email => this.setState({ email })}
+            value={this.state.email}
             placeholder="メールアドレス"
             placeholderTextColor='rgba(255,255,255,0.7)'
             style={styles.input}
-            />
+          />
           <TextInput
-          placeholder="パスワード"
-          placeholderTextColor='rgba(255,255,255,0.7)'
-          secureTextEntry
-          style={styles.input}
-            />
-          <Button onPress={() => this.props.navigation.navigate('App')}
+            secureTextEntry
+            autoCapitalize="none"
+            onChangeText={password => this.setState({ password })}
+            value={this.state.password}
+            placeholder="パスワード"
+            placeholderTextColor='rgba(255,255,255,0.7)'
+            style={styles.input}
+          />
+          <Button onPress={this.handleLogin}
             title="ログイン"
             color="#FFFFFF">
           </Button>
@@ -41,37 +61,6 @@ export default class Login extends Component {
           <Text style={styles.team}>presented by MIB</Text>
         </View>
       </View>
-
-      //FormComponent上手くいかず。。
-      //多分headerがnullとなっているから
-          //<FormLabel labelStyle={{fontSize:24}}>メールアドレス</FormLabel>
-          //<FormInput inputStyle={{fontSize:24}}
-            //onChangeText={(value)=>this.setState({mail:value})}
-            ///>
-          //<FormLabel labelStyle={{fontSize:24}}>パスワード</FormLabel>
-          //<FormInput inputStyle={{fontSize:24}}
-            //onChangeText={(value)=>this.setState({pass:value})}
-            ///>
-          //<FormValidationMessage labelStyle={{fontSize:18}}>
-            //{this.state.mail == '' ? 'type your mail...':''}
-          //</FormValidationMessage>
-          //<FormValidationMessage labelStyle={{fontSize:18}}>
-            //{this.state.pass == '' ? 'type your pass...':''}
-          //</FormValidationMessage>
-          //<Button onPress={() => this.props.navigation.navigate('Main')}
-            //title="ログイン"
-            //color="#FFFFFF">
-          //</Button>
-          //<Button onPress={() => this.props.navigation.navigate('Main')}
-            //title="既にアカウントをお持ちの方"
-            //color="#FFFFFF">
-          //</Button>
-          //<Button onPress={() => this.props.navigation.navigate('Practice')}
-            //title="練習用（後で削除）"
-            //color="#FFFFFF">
-          //</Button>
-        //</View>
-
     );
   }
 }

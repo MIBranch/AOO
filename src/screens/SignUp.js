@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
+import firebase from 'react-native-firebase'
 
 export default class Login extends Component {
-
+  state = { name: '', email: '', password: '', errorMessage: null }
+  handleSignUp = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => this.props.navigation.navigate('App'))
+      .catch(error => this.setState({ errorMessage: error.message }))
+  }
   render() {
     return(
       <View style={styles.container}>
@@ -12,28 +20,41 @@ export default class Login extends Component {
           <Text style={styles.subTitle}>以下の入力をするだけで簡単に登録出来ます。</Text>
         </View>
         <View style={styles.formContainer}>
+          {this.state.errorMessage &&
+            <Text style={{ color: 'red' }}>
+            {this.state.errorMessage}
+            </Text>}
           <View style={{
             flexDirextion: 'colum',
             justifycontent: 'center',
           }}>
             <TextInput
+              autoCapitalize="none"
+              onChangeText={name => this.setState({ name })}
+              value={this.state.name}
               placeholder="アカウント名"
               placeholderTextColor='rgba(255,255,255,0.7)'
               style={styles.input}
               />
             <TextInput
+              autoCapitalize="none"
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
               placeholder="メールアドレス"
               placeholderTextColor='rgba(255,255,255,0.7)'
               style={styles.input}
               />
             <TextInput
+              autoCapitalize="none"
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
               placeholder="パスワード"
               placeholderTextColor='rgba(255,255,255,0.7)'
               secureTextEntry
               style={styles.input}
               />
           </View>
-          <Button onPress={() => this.props.navigation.navigate('App')}
+          <Button onPress={this.handleSignUp}
             title="登録"
             color="#FFFFFF">
           </Button>
