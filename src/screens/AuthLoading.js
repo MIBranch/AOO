@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, ActivityIndicator, Button} from 'react-native';
+import firebase from 'react-native-firebase'
 
 export default class Login extends Component {
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.props.navigation.navigate(user ? 'App' : 'Auth')
+    })
+  }
   render() {
     return(
       //temporarily by button. will be implied with Firebase Auth
       <View style={styles.container}>
-        <Text>Loading</Text>
         <ActivityIndicator size="large" />
-        <Button onPress={() => this.props.navigation.navigate('App')}
-          title="Logged">
-        </Button>
-        <Button onPress={() => this.props.navigation.navigate('Auth')}
-          title="NotLogged">
-        </Button>
       </View>
     )
   }
