@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableHighlight, FlatList, ScrollView} from 'react-native';
-import { List, ListItem } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
+import { List, ListItem } from 'native-base';
 
 import data from '../dummy/FriendList.json';
 import Friend from '../models/Friend';
