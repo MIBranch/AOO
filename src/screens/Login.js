@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import {StyleSheet, Text, View, TouchableWithoutFeedback, StatusBar,
+        TextInput, SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView, Button } from 'react-native';
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
 import firebase from 'react-native-firebase';
 
@@ -18,49 +19,64 @@ export default class Login extends Component {
   }
   render() {
     return(
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Text style={styles.logo}>AOO</Text>
-          <Text style={styles.subTitle}>近くに友達はいるかな</Text>
-        </View>
-        <View style={styles.formContainer}>
-          {this.state.errorMessage &&
-            <Text style={{ color: 'red' }}>
-              {this.state.errorMessage}
-            </Text>
-          }
-          <TextInput
-            autoCapitalize="none"
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-            placeholder="メールアドレス"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            style={styles.input}
-          />
-          <TextInput
-            secureTextEntry
-            autoCapitalize="none"
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}
-            placeholder="パスワード"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            style={styles.input}
-          />
-          <Button onPress={this.handleLogin}
-            title="ログイン"
-            color="#FFFFFF">
-          </Button>
-        </View>
-        <View style={styles.formContainer2}>
-          <Button onPress={() => this.props.navigation.navigate('SignUp')}
-            title="新しいアカウントを作成"
-            color="#FFFFFF">
-          </Button>
-        </View>
-        <View style={styles.underContainer}>
-          <Text style={styles.team}>presented by MIB</Text>
-        </View>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="light-content"/>
+        <KeyboardAvoidingView behavior='padding' style={styles.container}>
+          <TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+              <View style={styles.logoContainer}>
+                <View style={styles.logoContainer}>
+                  <Text style={styles.logo}>AOO</Text>
+                  <Text style={styles.title}>近くに友達はいるかな</Text>
+                  <Text style={styles.blank}>　</Text>
+                </View>
+                <View style={styles.infoContainer}>
+                    {this.state.errorMessage &&
+                    <Text style={{ color: 'red' }}>
+                    {this.state.errorMessage}
+                    </Text>
+                    }
+                  <TextInput style={styles.input}
+                    /*autoCapitalize="none"
+                    onChangeText={email => this.setState({ email })}
+                    value={this.state.email}*/
+                    placeholder="メールアドレスを入力してください"
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    keyboardType='email-address'
+                    returnKeyType='next'
+                    autoCorrect={false}
+                    onSubmitEditing={()=> this.refs.txtPassword.focus()}
+                  />
+                  <TextInput style={styles.input}
+                    secureTextEntry
+                    /*autoCapitalize="none"
+                    onChangeText={password => this.setState({ password })}
+                    value={this.state.password}*/
+                    placeholder="パスワードを入力してください"
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    returnKeyType='go'
+                    autoCorrect={false}
+                    ref={"txtPassword"}
+                  />
+                  <Button onPress={this.handleLogin}
+                    title="ログイン"
+                    color= "#FFFFFF">
+                  </Button>
+                </View>
+                <View style={styles.formContainer2}>
+                  <Button onPress={() => this.props.navigation.navigate('SignUp')}
+                    title="新しいアカウントを作成"
+                    color="#FFFFFF">
+                  </Button>
+                </View>
+                <View style={styles.underContainer}>
+                  <Text style={styles.team}>presented by MIB</Text>
+                </View>
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
     );
   }
 }
@@ -69,44 +85,60 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2979FF'
+    backgroundColor: '#2979FF',
+    flexDirection: 'column',
   },
   logoContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     flexGrow: 1,
   },
   logo: {
-    color: '#fff',
     fontSize: 100,
-    padding: 30
+    padding: 25,
+    color: '#fff'
   },
-  subTitle: {
+  title: {
     color: '#fff',
-    fontSize: 15
+    fontSize: 15,
+    textAlign: 'center',
+    marginTop: 5,
+    opacity: 0.9,
   },
-  formContainer: {
-    flex: 2,
-    padding: 55
+  blank: {
+    fontSize: 200
+  },
+  infoContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 280,
+    padding: 20,
   },
   input: {
     height: 40,
-    marginBottom: 20,
-    color: 'rgba(255,255,255,0.87)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    color: '#FFF',
+    marginBottom: 15,
     paddingHorizontal: 10,
-    borderBottomColor: 'rgba(255,255,255,0.87)',
-    borderBottomWidth: 1
   },
   formContainer2: {
-    flex: 1,
-    padding:25,
+    left: 0,
+    right: 0,
+    bottom: 20,
+    height: 50,
+    padding: 10,
   },
   underContainer: {
-    flex: 1,
-    alignItems: 'center',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 30,
+    padding: 5,
   },
   team: {
     color: '#fff',
     fontSize: 10,
-    padding: 30
   },
 });
