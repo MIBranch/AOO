@@ -9,6 +9,13 @@ export default class Login extends Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((userCredentials)=>{
+        if(userCredentials.user){
+          userCredentials.user.updateProfile({
+            displayName: this.state.name
+          })
+        }
+      })
       .then(() => this.props.navigation.navigate('App'))
       .catch(error => this.setState({ errorMessage: error.message }))
   }

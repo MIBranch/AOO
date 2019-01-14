@@ -37,9 +37,9 @@ export default class Login extends Component {
                     </Text>
                     }
                   <TextInput style={styles.input}
-                    /*autoCapitalize="none"
+                    autoCapitalize="none"
                     onChangeText={email => this.setState({ email })}
-                    value={this.state.email}*/
+                    value={this.state.email}
                     placeholder="メールアドレスを入力してください"
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     keyboardType='email-address'
@@ -49,9 +49,9 @@ export default class Login extends Component {
                   />
                   <TextInput style={styles.input}
                     secureTextEntry
-                    /*autoCapitalize="none"
+                    autoCapitalize="none"
                     onChangeText={password => this.setState({ password })}
-                    value={this.state.password}*/
+                    value={this.state.password}
                     placeholder="パスワードを入力してください"
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     returnKeyType='go'

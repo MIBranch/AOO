@@ -21,7 +21,7 @@ export default class MyInfo extends Component {
       <View style={styles.container}>
         <Text>表示名</Text>
         <TextInput
-          placeholder="谷口貴也"
+          placeholder={firebase.auth().currentUser.displayName}
           placeholderTextColor='rgba(0,0,255,0.5)'
           style={styles.input}
         />

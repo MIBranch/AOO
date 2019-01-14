@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableHighlight, FlatList, ScrollView} from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { List, ListItem } from 'native-base';
+import firebase from 'react-native-firebase';
 
 import data from '../dummy/FriendList.json';
 import Friend from '../models/Friend';
@@ -11,7 +12,7 @@ export default class Main extends Component {
     super();
     this.state={
       data: [],
-      status: '時間あり'
+      status: '時間あり',
     }
   }
   static navigationOptions = ({ navigation }) => {
@@ -23,7 +24,7 @@ export default class Main extends Component {
       );
       let headerTitle = (
         <TouchableHighlight style={styles.headerButton} onPress={() => navigation.navigate('MyInfo')}>
-          <Text style={styles.headerButtonText}>自分の名前</Text>
+          <Text style={styles.headerButtonText}>{firebase.auth().currentUser.displayName}</Text>
         </TouchableHighlight>
         );
       let headerTitleStyle: { alignSelf:"center" };
@@ -32,7 +33,6 @@ export default class Main extends Component {
           <Text style={styles.headerButtonText}>＋</Text>
         </TouchableHighlight>
         );
-
       return { headerTitle, headerTitleStyle, headerLeft, headerRight }
   }
 
