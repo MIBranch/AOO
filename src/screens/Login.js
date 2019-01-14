@@ -62,6 +62,7 @@ export default class Login extends Component {
                     title="ログイン"
                     color= "#FFFFFF">
                   </Button>
+                  <Text>　</Text>
                 </View>
                 <View style={styles.formContainer2}>
                   <Button onPress={() => this.props.navigation.navigate('SignUp')}
