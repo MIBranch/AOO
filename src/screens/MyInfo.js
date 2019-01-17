@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput } from 'react-native';
-import { Button, Icon, Badge} from 'native-base';
+import { Button, ListItem, Separator, Left, Body, Right, Icon } from 'native-base';
 import firebase from 'react-native-firebase';
 
 export default class MyInfo extends Component {
@@ -19,26 +19,51 @@ export default class MyInfo extends Component {
   render() {
     return(
       <View style={styles.container}>
-        <Text>表示名</Text>
-        <TextInput
-          placeholder={firebase.auth().currentUser.displayName}
-          placeholderTextColor='rgba(0,0,255,0.5)'
-          style={styles.input}
-        />
-        <Text></Text>
-        <Text>自分のつぶやき</Text>
-        <TextInput
-          placeholder="今日は誰かとご飯に行きたい"
-          placeholderTextColor='rgba(0,0,255,0.5)'
-          style={styles.input}
-        />
-        <Text></Text>
-        <Text>自分のID(登録のeメールアドレス変更)</Text>
-        <TextInput
-          placeholder="moonjawn@gmail.com"
-          placeholderTextColor='rgba(0,0,255,0.5)'
-          style={styles.input}
-        />
+        <ListItem>
+          <Left>
+            <Text>表示名</Text>
+          </Left>
+          <Body>
+            <TextInput
+              placeholder={firebase.auth().currentUser.displayName}
+              placeholderTextColor='rgba(0,0,255,0.5)'
+              style={styles.input}
+            />
+          </Body>
+          <Right>
+            <Icon name="arrow-forward" />
+          </Right>
+        </ListItem>
+        <ListItem>
+          <Left>
+            <Text>自分のつぶやき</Text>
+          </Left>
+          <Body>
+            <TextInput
+              placeholder="今日は誰かとご飯に行きたい"
+              placeholderTextColor='rgba(0,0,255,0.5)'
+              style={styles.input}
+            />
+          </Body>
+          <Right>
+            <Icon name="arrow-forward" />
+          </Right>
+        </ListItem>
+        <ListItem>
+          <Left>
+            <Text>Eメールアドレス</Text>
+          </Left>
+          <Body>
+            <TextInput
+              placeholder={firebase.auth().currentUser.email}
+              placeholderTextColor='rgba(0,0,255,0.5)'
+              style={styles.input}
+            />
+          </Body>
+          <Right>
+            <Icon name="arrow-forward" />
+          </Right>
+        </ListItem>
         <Text></Text>
         <Button search style={styles.base} onPress={() => alert("更新しました")}>
           <Text>更新</Text>
@@ -54,8 +79,6 @@ export default class MyInfo extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    flex: 1,
     fontSize: 35,
   },
   base: {
@@ -63,11 +86,9 @@ const styles = StyleSheet.create({
     color: '#2979FF',
   },
   input: {
-    padding: 5,
-    fontSize: 20,
+    fontSize: 18,
     paddingHorizontal: 10,
-    borderBottomColor: 'rgba(0,0,255,0.87)',
-    borderBottomWidth: 1
+
   },
   goTitle: {
     padding: 5,

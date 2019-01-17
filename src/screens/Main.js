@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerButtonText: {
+    fontSize: 23,
     color: "#000000",
   },
 });
