@@ -35,35 +35,23 @@ export default class MyInfo extends Component {
           <Text>自分のつぶやき</Text>
         </Left>
         <Body>
-          <TextInput
-            placeholder="今日は誰かとご飯に行きたい"
-            placeholderTextColor='rgba(0,0,255,0.5)'
-            style={styles.input}
-          />
+          <Text>"今日は誰かとご飯に行きたい"</Text>
         </Body>
         <Right>
           <Icon name="arrow-forward" />
         </Right>
       </ListItem>
-      <ListItem>
+      <ListItem onPress={() => this.props.navigation.navigate('ChangeEmail')}>
         <Left>
           <Text>Eメールアドレス</Text>
         </Left>
         <Body>
-          <TextInput
-            placeholder={firebase.auth().currentUser.email}
-            placeholderTextColor='rgba(0,0,255,0.5)'
-            style={styles.input}
-          />
+          <Text>{firebase.auth().currentUser.email}</Text>
         </Body>
         <Right>
           <Icon name="arrow-forward" />
         </Right>
       </ListItem>
-      <Text></Text>
-      <Button search style={styles.base} onPress={() => alert("更新しました")}>
-        <Text>更新</Text>
-      </Button>
       <Text></Text>
       <Button search style={styles.goTitle} onPress={this.handleLogOut}>
         <Text>LOGOUT</Text>

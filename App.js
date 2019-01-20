@@ -9,12 +9,14 @@ import MyInfo from './src/screens/MyInfo';
 import SignUp from './src/screens/SignUp';
 import AuthLoading from './src/screens/AuthLoading';
 import ChangeName from './src/screens/ChangeName';
+import ChangeEmail from './src/screens/ChangeEmail';
 
 const AppStack = createStackNavigator({
   Main: Main,
   AddFriend: AddFriend,
   MyInfo: MyInfo,
   ChangeName: ChangeName,
+  ChangeEmail: ChangeEmail,
 });
 
 const AuthStack = createStackNavigator({
