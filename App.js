@@ -8,11 +8,13 @@ import AddFriend from './src/screens/AddFriend';
 import MyInfo from './src/screens/MyInfo';
 import SignUp from './src/screens/SignUp';
 import AuthLoading from './src/screens/AuthLoading';
+import ChangeName from './src/screens/ChangeName';
 
 const AppStack = createStackNavigator({
   Main: Main,
   AddFriend: AddFriend,
   MyInfo: MyInfo,
+  ChangeName: ChangeName,
 });
 
 const AuthStack = createStackNavigator({
